@@ -1,0 +1,76 @@
+{% load cell_color %}
+
+<!DOCTYPE html>{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Инфляция в России</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+      table tr td.infcell {
+      text-align: center;
+      border-radius: 10px;
+      }
+    </style>
+   </head>
+
+  <body>
+    {% block content %}
+      <div class="row">
+        <h1 class="col s12">Инфляция в России</h1>
+        <div class="col s12 m8">
+        
+        <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Год</th>
+          <th>Январь</th>
+          <th>Февраль</th>
+          <th>Март</th>
+          <th>Апрель</th>
+          <th>Май</th>
+          <th>Июнь</th>
+          <th>Июль</th>
+          <th>Август</th>
+          <th>Сентябрь</th>
+          <th>Октябрь</th>
+          <th>Ноябрь</th>
+          <th>Декабрь</th>
+          <th>Всего</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for row in inflation_data %}
+        <tr>
+          <td>{{ row.Год }}</td>
+          <td class="infcell" style = "background-color: {{ row.Янв|cell_color }};">{{ row.Янв|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Фев|cell_color }};">{{ row.Фев|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Мар|cell_color }};">{{ row.Мар|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Апр|cell_color }};">{{ row.Апр|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Май|cell_color }};">{{ row.Май|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Июн|cell_color }};">{{ row.Июн|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Июл|cell_color }};">{{ row.Июл|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Авг|cell_color }};">{{ row.Авг|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Сен|cell_color }};">{{ row.Сен|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Окт|cell_color }};">{{ row.Окт|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Ноя|cell_color }};">{{ row.Ноя|dash_empty }}</td>
+          <td class="infcell" style = "background-color: {{ row.Дек|cell_color }};">{{ row.Дек|dash_empty }}</td>
+          <td class="infcell" style="background-color: LightGray">{{ row.Суммарная }}</td>
+
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+        </div>
+      </div>
+    {% endblock %}
+
+  </body>
+</html>
